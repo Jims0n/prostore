@@ -12,7 +12,7 @@ export const config = {
     },
     session: {
         strategy: 'jwt',
-        maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -33,7 +33,7 @@ export const config = {
 
                 // Check if user exists and password matches
                 if (user && user.password) {
-                    const isMatch = compareSync(credentials.password as string, user.password);
+                    const isMatch = await compareSync(credentials.password as string, user.password);
 
                     // If paswors is correct, return user
                     if (isMatch) {
@@ -54,14 +54,16 @@ export const config = {
     callbacks: {
         async session({ session, user, trigger, token }: any) {
             // Set the user ID from the token
-            session.user.id = token.sub;
+             session.user.id = token.sub;
+            session.user.role = token.role;
+            session.user.name = token.name;
 
             // If there is an update, set the user name
             if (trigger === 'update') {
                 session.user.name = user.name;
             }
 
-            return session
+            return session;
           },
     }
 
