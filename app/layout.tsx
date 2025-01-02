@@ -4,6 +4,7 @@ import '@/assets/styles/globals.css';
 import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from '@/lib/constants';
 import { ThemeProvider } from "next-themes";
 import { NextUIProvider } from "@nextui-org/react";
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
           <NextUIProvider>
           {children}
           </NextUIProvider>
-        
+        <Toaster />ß
         </ThemeProvider>
         </body>
     </html>
