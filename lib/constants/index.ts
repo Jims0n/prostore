@@ -18,3 +18,11 @@ export const LATEST_PRODUCTS_LIMIT =
     password: '',
     confirmPassword: '',
   };
+
+  export const shippingAddressDefaultValues = {
+    fullName: 'Jimson',
+    streetAddress: '123 Master st',
+    city: 'Ohio',
+    postalCode: '12345',
+    country: 'USA'
+  }
