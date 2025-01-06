@@ -20,9 +20,9 @@ export const LATEST_PRODUCTS_LIMIT =
   };
 
   export const shippingAddressDefaultValues = {
-    fullName: 'Jimson',
-    streetAddress: '123 Master st',
-    city: 'Ohio',
-    postalCode: '12345',
-    country: 'USA'
+    fullName: '',
+    streetAddress: '',
+    city: '',
+    postalCode: '',
+    country: ''
   }
