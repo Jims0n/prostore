@@ -121,6 +121,7 @@ const PlaceOrderPage = async () => {
                             <div>Total</div>
                             <div>{formatCurrency(cart.totalPrice)}</div>
                         </div>
+                        <PlaceOrderPage />
                         </CardContent> 
                     </Card>
                 </div>
