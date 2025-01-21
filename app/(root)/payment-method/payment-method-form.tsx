@@ -27,28 +27,33 @@ const PaymentMethodForm = ({ preferredPaymentMethod, }: { preferredPaymentMethod
 
     const [isPending, startTransition] = useTransition();
 
-    const onSubmit = async (values: z.infer<typeof paymentMethodSchema>) => {
+    const onSubmit = async function onSubmit(values: z.infer<typeof paymentMethodSchema>) {
         startTransition(async () => {
-            const res = await updateUserPaymentMethod(values);
-
-            if (!res.success) {
-                toast({
-                    variant: 'destructive',
-                    description: res.message
-                });
-                return;
-            }
-
-            router.push("/place-order")
-        })
-    }
+          const res = await updateUserPaymentMethod(values);
+      
+          if (!res.success) {
+            toast({
+              variant: 'destructive',
+              description: res.message,
+            });
+      
+            return;
+          }
+      
+          router.push('/place-order');
+        });
+      }
 
     return ( <>
         <div className="max-w-md mx-auto space-y-4">
             <h1 className="h2-bold mt-4">Payment Method</h1>
             <p className="text-sm text-muted-foreground">Please select a payment method</p>
             <Form {...form}>
-                <form method="post" className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+                <form 
+                method='post'
+                onSubmit={form.handleSubmit(onSubmit)}
+                className='space-y-4'
+                >
                     <div className="flex flex-col md:flex-row gap-5">
                         <FormField
                         control={form.control}

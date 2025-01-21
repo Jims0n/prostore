@@ -1,4 +1,4 @@
-'use server'
+
 
 import Link from "next/link";
 import { auth } from "@/auth";
@@ -15,7 +15,7 @@ const UserButton = async () => {
     if (!session)
     return (
         <Button asChild>
-            <Link href='/sign-in'>
+            <Link href='/api/auth/signin'>
         <UserIcon />Sign In
       </Link>
         </Button>
@@ -47,10 +47,14 @@ const UserButton = async () => {
                 </DropdownMenuLabel>
                 <DropdownMenuItem className="p-0 mb-1">
                 <form action={signOutUser} className='w-full'>
-                        <Button className="w-full py-4 px-2 h-4 justify-start" variant="ghost">
-                            Sign Out
-                        </Button>
-                    </form>
+          <Button
+          type="submit"
+            className='w-full py-4 px-2 h-4 justify-start'
+            variant='ghost'
+          >
+            Sign Out
+          </Button>
+        </form>
                 </DropdownMenuItem>
                 </DropdownMenuContent>
                 
