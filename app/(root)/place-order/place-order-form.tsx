@@ -18,7 +18,7 @@ const PlaceOrderForm = () => {
         if (res.redirectTo) {
             router.push(res.redirectTo)
         }
-    }
+    };
 
     const PlaceOrderButton = () => {
         const { pending } = useFormStatus();
@@ -28,13 +28,16 @@ const PlaceOrderForm = () => {
                     <Loader className="w-4 h-4 animate-spin" />
                 ) :(
                     <Check className="w-4 h-4" />
-                )}{' '} Place Order
+                )}{' '}
+        Place Order
             </Button>
         )
     }
-    return <form onSubmit={handleSubmit} className="w-full">
+    return (
+    <form onSubmit={handleSubmit} className="w-full">
         <PlaceOrderButton />
-    </form>;
+    </form>
+    );
 }
  
 export default PlaceOrderForm;

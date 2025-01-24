@@ -75,7 +75,7 @@ export async function createOrder() {
 
         if (!insertedOrderId) throw new Error('Order not created');
 
-        return { success: true, message: 'Order created', redirectTo: `/order${insertedOrderId}`}
+        return { success: true, message: 'Order created', redirectTo: `/order/${insertedOrderId}`,}
     } catch (error) {
         if (isRedirectError(error)) throw error;
         return {success: false, message: formatError(error)}
