@@ -41,7 +41,7 @@ export async function createOrder() {
             shippingAddress: user.address,
             paymentMethod: user.paymentMethod,
             itemsPrice: cart.itemsPrice,
-            shippingprice: cart.shippingPrice,
+            shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice,
         });
@@ -80,6 +80,7 @@ export async function createOrder() {
         return { success: true, message: 'Order created', redirectTo: `/order/${insertedOrderId}`,}
     } catch (error) {
         if (isRedirectError(error)) throw error;
+        
         return {success: false, message: formatError(error)}
     }
 }
