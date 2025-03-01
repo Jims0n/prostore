@@ -18,7 +18,6 @@ import { useRouter } from "next/navigation";
 import { UploadButton } from "@/lib/uploadthing";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
-import { error } from "console";
 import { Checkbox } from "../ui/checkbox";
 
 
