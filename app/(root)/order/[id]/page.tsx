@@ -23,10 +23,29 @@ const OrderDetailsPage = async (props: {
 
     return (
         <OrderDetailsTable
-      order={{
-        ...order,
-        shippingAddress: order.shippingAddress as ShippingAddress,
-      }}
+        order={{
+            ...order,
+            shippingAddress: order.shippingAddress as ShippingAddress,
+            isPaid: Boolean(order.isPaid),
+            isDelivered: Boolean(order.isDelivered),
+            user: {
+                ...order.user,
+                name: order.user.name || ''
+            },
+            paymentResult: typeof order.paymentResult === 'object' && order.paymentResult !== null
+              ? order.paymentResult as {
+                  id: string;
+                  status: string;
+                  email_address: string;
+                  pricePaid: string;
+                }
+              : {
+                  id: '',
+                  status: '',
+                  email_address: '',
+                  pricePaid: ''
+                }
+        }}
       paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
       isAdmin={session?.user.role === 'admin' || false}
     />
