@@ -54,3 +54,5 @@ export const LATEST_PRODUCTS_LIMIT =
     comment: '',
     rating: 0,
   }
+
+  export const SENDER_EMAIL = process.env.SENDER_EMAIL || 'onboarding@resend.dev';
